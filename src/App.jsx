@@ -1,5 +1,6 @@
+import Home from "./components/Home";
 function App() {
-  return <h1 className="bg-blue-100">Hello</h1>;
+  return <Home />;
 }
 
 export default App;
