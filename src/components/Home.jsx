@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Home = () => {
   const [name1, setName1] = useState("");
@@ -10,6 +10,12 @@ const Home = () => {
     if (e.key === "Enter") {
       getFlame(name1, name2);
     }
+  };
+
+  const resetFlame = () => {
+    setName1("");
+    setName2("");
+    setResult("");
   };
 
   // Javascript program to implement FLAMES game
@@ -107,12 +113,18 @@ const Home = () => {
               required
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-10">
             <button
-              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 focus:outline-none focus:ring focus:ring-sky-400"
+              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400 mr-10"
               onClick={() => getFlame(name1, name2)}
             >
               Find
+            </button>
+            <button
+              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400"
+              onClick={() => resetFlame()}
+            >
+              Reset
             </button>
           </div>
         </div>
@@ -120,7 +132,7 @@ const Home = () => {
           <div>
             {isLoading ? (
               <div className="flex justify-center items-center mt-10">
-                <div class="p-6 border-4 border-blue-500 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+                <div class="p-6 border-4 border-white border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
               </div>
             ) : (
               <div className="flex justify-center mt-10 mx-9 text-5xl  bg-slate-300 py-4 rounded-xl">
