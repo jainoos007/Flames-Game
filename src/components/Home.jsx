@@ -79,7 +79,7 @@ const Home = () => {
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-slate-800 text-2xl mr-3 font-bold font-mono"
+              className=" text-slate-800 text-2xl mr-3 font-bold font-arial"
               htmlFor={name1}
             >
               Name 1:
@@ -97,7 +97,7 @@ const Home = () => {
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-slate-800 text-2xl mr-3 font-bold font-mono"
+              className=" text-slate-800 text-2xl mr-3 font-bold font-arial"
               htmlFor={name2}
             >
               Name 2:
