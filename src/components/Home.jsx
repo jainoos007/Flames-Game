@@ -8,6 +8,10 @@ const Home = () => {
   // Javascript program to implement FLAMES game
   // Function to find out the flames result
   const getFlame = (name1, name2) => {
+    if (!name1 || !name2) {
+      alert("Please fill the blanks");
+      return;
+    }
     const ans = name1
       .toLowerCase()
       .split("") // take all characters in "name1", to compare
@@ -51,17 +55,15 @@ const Home = () => {
   };
 
   return (
-    <div className="h-screen w-screen justify-center items-center flex  bg-gray-200">
-      <div className="h-96 w-96 px-5 py-4 bg-blue-300 shadow-md">
-        <>
+    <div className="h-screen w-screen justify-center items-center flex bg-[url('/src/assets/bg.jpg')] bg-cover bg-center ">
+      <div className="h-96 w-96 px-5 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md rounded-md opacity-80">
+        <div>
           <div className="flex justify-center">
-            <h2 className="text-4xl text-yellow-200 mb-5 underline">
-              F L A M E S
-            </h2>
+            <h2 className="font-serif text-4xl mb-5 underline">F L A M E S</h2>
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-blue-500 text-xl mr-3 font-bold"
+              className=" text-slate-800 text-2xl mr-3 font-bold font-mono"
               htmlFor={name1}
             >
               Name 1:
@@ -78,7 +80,7 @@ const Home = () => {
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-blue-500 text-xl mr-3 font-bold"
+              className=" text-slate-800 text-2xl mr-3 font-bold font-mono"
               htmlFor={name2}
             >
               Name 2:
@@ -95,18 +97,18 @@ const Home = () => {
           </div>
           <div className="flex justify-center">
             <button
-              className="bg-yellow-300 text-gray-700 font-semibold px-6 py-1 rounded-full"
+              className="bg-yellow-300 text-gray-700 font-semibold px-6 py-1 rounded-full shadow-md"
               onClick={() => getFlame(name1, name2)}
             >
               Find
             </button>
           </div>
-          {result && (
-            <div className="flex justify-center mt-12 text-5xl text-red-700 bg-slate-300 py-4 rounded-xl">
-              <h2 className="italic font-semibold">{result}</h2>
-            </div>
-          )}
-        </>
+        </div>
+        {result && (
+          <div className="flex justify-center mt-12 text-5xl text-red-700 bg-slate-300 py-4 rounded-xl">
+            <h2 className="italic font-semibold">{result}</h2>
+          </div>
+        )}
       </div>
     </div>
   );
