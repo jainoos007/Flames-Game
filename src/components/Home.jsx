@@ -4,11 +4,21 @@ const Home = () => {
   const [name1, setName1] = useState("");
   const [name2, setName2] = useState("");
   const [result, setResult] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      getFlame(name1, name2);
+    }
+  };
 
   // Javascript program to implement FLAMES game
   // Function to find out the flames result
   const getFlame = (name1, name2) => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 2000);
     if (!name1 || !name2) {
+      setResult("");
       alert("Please fill the blanks");
       return;
     }
@@ -69,12 +79,13 @@ const Home = () => {
               Name 1:
             </label>
             <input
-              className="rounded-lg px-2"
+              className="rounded-lg px-2 border border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name1}
               value={name1}
               onChange={(e) => setName1(e.target.value)}
               type="text"
               placeholder="Enter the name"
+              onKeyDown={handleKeyDown}
               required
             />
           </div>
@@ -86,18 +97,19 @@ const Home = () => {
               Name 2:
             </label>
             <input
-              className="rounded-lg px-2"
+              className="rounded-lg px-2 border border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name2}
               value={name2}
               type="text"
               onChange={(e) => setName2(e.target.value)}
               placeholder="Enter the name"
+              onKeyDown={handleKeyDown}
               required
             />
           </div>
           <div className="flex justify-center">
             <button
-              className="bg-yellow-300 text-gray-700 font-semibold px-6 py-1 rounded-full shadow-md"
+              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 focus:outline-none focus:ring focus:ring-sky-400"
               onClick={() => getFlame(name1, name2)}
             >
               Find
@@ -105,8 +117,18 @@ const Home = () => {
           </div>
         </div>
         {result && (
-          <div className="flex justify-center mt-12 text-5xl text-red-700 bg-slate-300 py-4 rounded-xl">
-            <h2 className="italic font-semibold">{result}</h2>
+          <div>
+            {isLoading ? (
+              <div className="flex justify-center items-center mt-10">
+                <div class="p-6 border-4 border-blue-500 border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+              </div>
+            ) : (
+              <div className="flex justify-center mt-10 mx-9 text-5xl  bg-slate-300 py-4 rounded-xl">
+                <h2 className="italic font-semibold font-serif animate-bounce">
+                  {result}
+                </h2>
+              </div>
+            )}
           </div>
         )}
       </div>
