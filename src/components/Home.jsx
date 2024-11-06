@@ -1,10 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../config/firebase";
+import { addDoc, getDocs, collection } from "firebase/firestore"; // Add getDocs and collection
+
+import { Timestamp } from "firebase/firestore/lite";
 
 const Home = () => {
   const [name1, setName1] = useState("");
   const [name2, setName2] = useState("");
   const [result, setResult] = useState("");
+  const [history, setHistory] = useState([]);
   const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Fetch history from Firestore
+    const fetchHistory = async () => {
+      try {
+        // Access the "flamesHistory" collection
+        const flamesHistoryCollection = collection(db, "flamesHistory");
+
+        // Fetch all documents in the collection
+        const querySnapshot = await getDocs(flamesHistoryCollection);
+
+        // Extract documents and their data
+        const historyData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(), // Spread document data into the object
+        }));
+
+        // Update the history state with fetched data
+        setHistory(historyData);
+      } catch (error) {
+        console.error("Error fetching history: ", error);
+      }
+    };
+
+    fetchHistory();
+  }, []);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -20,7 +51,7 @@ const Home = () => {
 
   // Javascript program to implement FLAMES game
   // Function to find out the flames result
-  const getFlame = (name1, name2) => {
+  const getFlame = async (name1, name2) => {
     setLoading(true);
     setTimeout(() => setLoading(false), 2000);
     if (!name1 || !name2) {
@@ -28,7 +59,7 @@ const Home = () => {
       alert("Please fill the blanks");
       return;
     }
-    const ans = name1
+    const flameResult = name1
       .toLowerCase()
       .split("") // take all characters in "name1", to compare
       .filter((c) => name2.toLowerCase().includes(c)) // keep only characters (in "name1") also found in "name2"
@@ -67,7 +98,31 @@ const Home = () => {
             flame.toLowerCase().startsWith(result.toLowerCase())
           )[0] // present result in readable form
       )[0];
-    setResult(ans);
+
+    setResult(flameResult);
+
+    //adding history results
+    const newEntry = {
+      name1,
+      name2,
+      result: flameResult,
+      timestamp: new Date(),
+    };
+    setHistory([...history, newEntry]);
+    console.log(history);
+
+    // Save to Firestore
+    try {
+      // Access the collection using the `collection()` method
+      const flamesHistoryCollection = collection(db, "flamesHistory");
+
+      // Use the `addDoc()` method to add a new document
+      await addDoc(flamesHistoryCollection, newEntry);
+
+      setHistory([newEntry, ...history]); // Update local history
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   };
 
   return (
@@ -103,7 +158,7 @@ const Home = () => {
               Name 2:
             </label>
             <input
-              className="text-sm rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              className="text-sm  rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name2}
               value={name2}
               type="text"
