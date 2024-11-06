@@ -85,7 +85,7 @@ const Home = () => {
               Name 1:
             </label>
             <input
-              className="rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              className="text-sm rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name1}
               value={name1}
               onChange={(e) => setName1(e.target.value)}
@@ -103,7 +103,7 @@ const Home = () => {
               Name 2:
             </label>
             <input
-              className="rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              className="text-sm rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name2}
               value={name2}
               type="text"
