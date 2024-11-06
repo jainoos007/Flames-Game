@@ -72,7 +72,7 @@ const Home = () => {
 
   return (
     <div className="h-screen w-screen justify-center items-center flex bg-[url('/src/assets/bg.jpg')] bg-cover bg-center ">
-      <div className="h-96 w-96 px-5 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md rounded-md opacity-80">
+      <div className="h-96 w-fit  px-5 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md rounded-md opacity-80">
         <div>
           <div className="flex justify-center">
             <h2 className="font-serif text-4xl mb-5 underline">F L A M E S</h2>
