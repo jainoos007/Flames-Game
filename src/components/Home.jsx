@@ -132,7 +132,7 @@ const Home = () => {
           <div>
             {isLoading ? (
               <div className="flex justify-center items-center mt-10">
-                <div class="p-6 border-4 border-white border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
+                <div className="p-6 border-4 border-white border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
               </div>
             ) : (
               <div className="flex justify-center mt-10 mx-9 text-5xl  bg-slate-300 py-4 rounded-xl">
