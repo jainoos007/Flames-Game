@@ -79,13 +79,13 @@ const Home = () => {
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-slate-800 text-2xl mr-3 font-bold font-arial"
+              className=" text-slate-800 text-1xl md:text-2xl mr-3 font-bold font-arial"
               htmlFor={name1}
             >
               Name 1:
             </label>
             <input
-              className="rounded-lg px-2 border border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              className="rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name1}
               value={name1}
               onChange={(e) => setName1(e.target.value)}
@@ -97,13 +97,13 @@ const Home = () => {
           </div>
           <div className="flex mt-5 mb-5">
             <label
-              className=" text-slate-800 text-2xl mr-3 font-bold font-arial"
+              className=" text-slate-800 text-1xl md:text-2xl mr-3 font-bold font-arial"
               htmlFor={name2}
             >
               Name 2:
             </label>
             <input
-              className="rounded-lg px-2 border border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              className="rounded-lg px-2 border w-28 md:w-fit border-slate-300 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               id={name2}
               value={name2}
               type="text"
@@ -115,13 +115,13 @@ const Home = () => {
           </div>
           <div className="flex justify-center mt-10">
             <button
-              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400 mr-10"
+              className=" duration-500 ease-in-out bg-slate-800 text-sm md:text-md text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400 mr-10"
               onClick={() => getFlame(name1, name2)}
             >
               Find
             </button>
             <button
-              className="duration-500 ease-in-out bg-slate-800 text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400"
+              className="duration-500 ease-in-out bg-slate-800 text-sm md:text-md text-white font-mono font-semibold px-6 py-1 rounded-full shadow-md hover:bg-slate-900 active:bg-slate-600 active:transform active:translate-y-1 focus:outline-none focus:ring focus:ring-sky-400"
               onClick={() => resetFlame()}
             >
               Reset
@@ -135,8 +135,8 @@ const Home = () => {
                 <div className="p-6 border-4 border-white border-t-transparent rounded-full w-8 h-8 animate-spin"></div>
               </div>
             ) : (
-              <div className="flex justify-center mt-10 mx-9 text-5xl  bg-slate-300 py-4 rounded-xl">
-                <h2 className="italic font-semibold font-serif animate-bounce">
+              <div className="flex justify-center mt-10 mx-9 text-5xl  bg-slate-300 py-4 px-2 rounded-xl">
+                <h2 className="text-3xl md:text-md italic font-semibold font-serif animate-bounce">
                   {result}
                 </h2>
               </div>
