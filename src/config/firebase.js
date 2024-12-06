@@ -3,13 +3,13 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Your Firebase config object
 const firebaseConfig = {
-  apiKey: "AIzaSyAKYmx4hYSX5ITy6ML9UtnKDJCv9vQJq5k",
-  authDomain: "flames-game-a1299.firebaseapp.com",
-  projectId: "flames-game-a1299",
-  storageBucket: "flames-game-a1299.firebasestorage.app",
-  messagingSenderId: "240761498295",
-  appId: "1:240761498295:web:9c5ea0bd0a7f354e9d7b32",
-  measurementId: "G-T27LDF581B",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTO_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSEAGING_CENTER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASURMENT_ID,
 };
 
 // Initialize Firebase
