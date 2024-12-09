@@ -1,4 +1,5 @@
-FLAMES Game
+FLAMES Game:
+
 A modern implementation of the classic FLAMES game built with React. This fun and interactive app predicts relationships (for entertainment purposes) based on names provided by the user.
 
 Demo
